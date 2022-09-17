@@ -6,7 +6,6 @@
 
         <title>Laravel</title>
 
-        
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <script src="{{ asset('js/preview.js')}}" defer></script>
         
@@ -22,11 +21,13 @@
         </style>
     </head>
     <body class="antialiased">
+        @extends("header")
+        @section("content")
         <h2>新規投稿ページ</h2>
         
         <form method="post", action="/posts" enctype="multipart/form-data">
             @csrf
-            <p>名前</p>
+            <p>投稿者</p>
             <input type="text", name="post[name]"/>
             <p>タイトル</p>
             <input type="text", name="post[title]"/>
@@ -41,5 +42,6 @@
             
             <input type="submit" value="送信"/>
         </form>
+        @endsection
     </body>
 </html>
