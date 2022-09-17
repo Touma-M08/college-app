@@ -9,8 +9,11 @@ use App\Models\Image;
 
 class PostController extends Controller
 {
-    public function index() {
-        return view('posts/index');
+    public function index(Post $post, Image $image) {
+        return view('posts/index')->with([
+            "posts" => $post->get(),
+            "images" => $image->get()
+        ]);
     }
     
     public function create() {
