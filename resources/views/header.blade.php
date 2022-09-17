@@ -6,7 +6,7 @@
 
         <title>Laravel</title>
 
-        
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
         
@@ -29,7 +29,7 @@
                         <a href="/">疑問解決</a>
                     </li>
                     <li>
-                        <a href="/work">制作物</a>
+                        <a href="/works">制作物</a>
                     </li>
                 </ul>
             </nav>
