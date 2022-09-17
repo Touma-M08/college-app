@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+    
+    protected $fillable = ['image','post_id']; 
+    
+    public function Post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
