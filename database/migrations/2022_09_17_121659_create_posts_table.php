@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 20);
             $table->string('title');
             $table->string('problem');
-            $table->string('answer');
+            $table->string('solution');
             $table->timestamps();
         });
     }
