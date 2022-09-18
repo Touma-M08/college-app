@@ -1,0 +1,27 @@
+.content {
+    padding-left: 18%;
+}
+
+.page-ttl {
+    margin-bottom: 20px;
+}
+
+.input {
+width: 300px;
+border: 1px solid #333;
+padding: 5px;
+}
+
+.setting-item {
+    margin-top: 15px;
+}
+
+.submit {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+}
+
+.password {
+    margin-top: 70px;
+}

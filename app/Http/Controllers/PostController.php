@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index(Post $post, Image $image) {
         return view('posts/index')->with([
-            "posts" => $post->get(),
+            "posts" => $post->orderBy("created_at", "desc")->paginate(3),
             "images" => $image->get()
         ]);
     }
@@ -21,9 +21,10 @@ class PostController extends Controller
     }
     
     public function store(Request $request, Post $post) {
-        $count = count($request->image);
-        if ($request->image[0] == null) {
+        if ($request->image == null) {
             $count = 0;
+        }else {
+            $count = count($request->image);
         }
     
         $input = $request['post'];

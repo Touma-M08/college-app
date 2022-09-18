@@ -25,30 +25,45 @@
     <body class="antialiased">
         @extends("header")
         @section("content")
-        <div>
-            <a href="/posts/create">作成</a>
+        <div class="content">
+            <div class="page-ttl">Q&A</div>
             
-            <div>
+            <div class="posts">
                 @foreach ($posts as $post)
                     <div class="post">
                         
-                        <h2>{{ $post->title }}</h2>
+                        <pre class="title">{{ $post->title }}</pre>
+        
+                        <p class="name">{{ $post->user->name }}<p>
                         
-                        <p>{{ $post->name }}<p>
-                        <p>発生した問題・疑問<p>
-                        <h2>{{ $post->problem }}</h2>
-                        <p>解決方法<p>
-                        <h2>{{ $post->solution }}</h2>
-                        <p>エラー画像など<p>
-                        <div class=img-box>
+                        <div class="post-item">
+                            <p>・発生した問題・疑問<p>
+                            <pre>{{ $post->problem }}</pre>
+                        </div>
+                        
+                        <div class="post-item">
+                            <p>・解決方法<p>
+                            <pre>{{ $post->solution }}</pre>
+                        </div>
+                
+                        <div class="post-item">
+                            <p>・エラー画像など<p>
+                            <div class="img">
                             @foreach ($images as $image)
                                 @if ($image->post_id == $post->id)
-                                    <a href="{{ $image->image }}" data-lightbox="group"><img src="{{ $image->image }}"></a>
+                                    <div class=img-box>
+                                        <a href="{{ $image->image }}" data-lightbox="group{{$image->post_id}}"><img src="{{ $image->image }}"></a>
+                                    </div>
                                 @endif
                             @endforeach
+                            </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+            
+            <div class="paginate">
+                {{ $posts->links() }}
             </div>
         </div>
         @endsection
