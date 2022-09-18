@@ -19,6 +19,8 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <script src="{{asset('js/modalToggle.js')}}" defer></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
@@ -26,27 +28,68 @@
     <body class="antialiased">
         @extends("header")
         @section("content")
-        <div>
-            <a href="/works/create">作成</a>
+        <div class="content">
+            <div class="page-ttl">制作物一覧</div>
             
-            <div>
+            <div class="works">
                 @foreach ($works as $work)
-                    <div class="work">
-                        <img src="{{ $work->image }}">
-                        <h2>{{ $work->title }}</h2>
-                        <p>{{ $work->name }}<p>
-                        <p>アプリ概要<p>
-                        <h2>{{ $work->summary }}</h2>
-                        <p>開発言語<p>
-                        <h2>{{ $work->language }}</h2>
-                        <div>
-                            <a href="{{ $work->url }}">リンク</a>
+                <div class="work">
+                    <div class="item">
+                        <div class="img-box">
+                            <img src="{{ $work->image }}">
                         </div>
-                        <div>
-                            <a href="{{ $work->github }}">github</a>
+                        <h2>{{ $work->title }}</h2>
+                    </div>
+                        
+                    <div class="modal">
+                        <div class="modal-pos">
+                            <div class="close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            
+                            @auth
+                                @if ($work->user_id == Auth::user()->id)
+                                    <div class="edit">
+                                        <a href="/works/{{ $work->id }}/edit">編集</a>
+                                    </div>
+                                @endif
+                            @endauth
+                            <div class="modal-img-box">
+                                <a href="{{ $work->image }}" data-lightbox="group{{$work->id}}">
+                                    <img src="{{ $work->image }}">
+                                </a>
+                            </div>
+                            
+                            <h2>{{ $work->title }}</h2>
+                            <p>制作者:{{ $work->user->name }}<p>
+                                
+                            <div class="flex">
+                                <div class="w48">
+                                    <p>アプリ概要<p>
+                                    <pre class="text">{{ $work->summary }}<pre>
+                                </div>
+                                
+                                <div class="w48">
+                                    <p>開発言語<p>
+                                    <p>{{ $work->language }}<p>
+                                    <div class="btn-pos">
+                                        <div>
+                                            <a href="{{ $work->url }}">リンク</a>
+                                        </div>
+                                        <div>
+                                            <a href="{{ $work->github }}">github</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
+            </div>
+            
+            <div class="paginate">
+                {{ $works->links() }}
             </div>
         </div>
         @endsection

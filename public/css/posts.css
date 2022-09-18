@@ -1,19 +1,43 @@
 .post {
-    border: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 10px;
 }
 
 .post + .post {
     margin-top: 20px;
 }
 
-.img-box {
-    height: 150px;
-    display: flex;
+.post pre {
+    max-width: 100%;
 }
 
-.img-box a {
+.post .post-item {
+    margin-top: 10px;
+}
+
+.title {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background:linear-gradient(transparent 60%, rgba(160, 124, 196, 0.6) 0%);
+}
+
+.name {
+    font-size: 0.9rem;
+}
+
+.img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-box {
+    height: 150px;
     width: 200px;
-    height: auto;
+}
+
+.img-box + .img-box {
+    margin-left: 10px;
 }
 
 .img-box a img {

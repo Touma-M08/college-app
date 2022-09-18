@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('summary')->nullable();
             $table->string('language')->nullable();

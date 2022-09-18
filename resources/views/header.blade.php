@@ -8,7 +8,7 @@
 
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        
+        <link href="{{ asset('css/header.css')}}" rel="stylesheet">
         
         <!-- Styles -->
         <style>
@@ -22,18 +22,56 @@
         </style>
     </head>
     <body class="antialiased">
-        <div>
-            <nav>
+        <nav class="header-nav">
+            <div class="site-ttl">
+                <a href="/">App</a>
+            </div>
+            <ul>
+                @guest
+                <li>
+                    <a href="/login">ログイン</a>
+                </li>
+                <li>
+                    <a href="/register">新規登録</a>
+                </li>
+                @else
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            ログアウト
+                        </a>
+                    </form>
+                </li>
+                @endguest
+            </ul>
+        </nav>
+        <div class="contents">
+            <nav class=side>
                 <ul>
                     <li>
-                        <a href="/">疑問解決</a>
+                        <a href="/">Q&A</a>
                     </li>
                     <li>
                         <a href="/works">制作物</a>
                     </li>
+                    @auth
+                    <li>
+                        <a href="/setting">設定</a>
+                    </li>
+                    @if (Request::routeIs('posts.index'))
+                        <li class="create">
+                            <a href="/posts/create">疑問と解決法を登録する</a>
+                        </li>
+                    @elseif (Request::routeIs('works.index'))
+                        <li class="create">
+                            <a href="/works/create">制作物を投稿する</a>
+                        </li>
+                    @endif
+                    @endauth
                 </ul>
             </nav>
+            @yield('content')
         </div>
-        @yield('content')
     </body>
 </html>
