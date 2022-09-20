@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Comment_image extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['image','post_id']; 
+    protected $fillable = ['comment_id', 'image'];
     
-    public function post()
+    public function comment()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Comment::class);
     }
 }

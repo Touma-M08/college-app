@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Access_count extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['image','post_id']; 
+    protected $fillable = ['post_id', 'count'];
     
     public function post()
     {

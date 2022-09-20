@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['user_id','title','problem', 'solution']; 
+    protected $fillable = ['post_id', 'user_id', 'comment'];
     
-    public function images()
+    public function post()
     {
-        return $this->hasMany(Image::class);
+        return $this->belongsTo(Post::class);
     }
     
     public function user()
@@ -21,8 +21,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function access_count()
+    public function comment_images()
     {
-        return $this->hasOne(Access_count::class);
+        return $this->hasMany(Comment_image::class);
     }
 }

@@ -25,7 +25,7 @@
         @extends("header")
         @section("content")
         <div class="content">
-            <p class="page-ttl">制作物投稿<p>
+            <p class="page-ttl">制作物登録<p>
             
             <form method="post", action="/works" enctype="multipart/form-data">
                 @csrf

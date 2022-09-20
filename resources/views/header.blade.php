@@ -53,6 +53,9 @@
                         <a href="/">Q&A</a>
                     </li>
                     <li>
+                        <a href="/posts/ranking">アクセス数ランキング</a>
+                    </li>
+                    <li>
                         <a href="/works">制作物</a>
                     </li>
                     @auth
@@ -61,11 +64,11 @@
                     </li>
                     @if (Request::routeIs('posts.index'))
                         <li class="create">
-                            <a href="/posts/create">疑問と解決法を登録する</a>
+                            <a href="/posts/create">Q&Aを投稿する</a>
                         </li>
                     @elseif (Request::routeIs('works.index'))
                         <li class="create">
-                            <a href="/works/create">制作物を投稿する</a>
+                            <a href="/works/create">制作物を登録する</a>
                         </li>
                     @endif
                     @endauth
