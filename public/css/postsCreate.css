@@ -20,6 +20,42 @@ padding: 5px;
     margin-top: 15px;
 }
 
+.img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img-box {
+    height: 150px;
+    width: 200px;
+    position: relative;
+}
+
+.img-box + .img-box {
+    margin-left: 10px;
+}
+
+.img-box a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delete-btn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.delete-btn i {
+    width: 100%;
+    height: 100%;
+    color: red;
+    font-size: 22px;
+}
+
 #preview {
     margin-top: 10px;
 }

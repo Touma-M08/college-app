@@ -83,7 +83,12 @@ class PostController extends Controller
     
     public function edit(Post $post) 
     {
-        return view('posts/edit')->with(["post" => $post]);
+        $images = Image::where("post_id", $post->id)->get();
+        
+        return view('posts/edit')->with([
+            "post" => $post,
+            "images" => $images    
+        ]);
     }
     
     public function update(Request $request, Post $post) 
@@ -128,5 +133,13 @@ class PostController extends Controller
         $access_count->save();
         
         return redirect("/posts/".$post->id);
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        $count_data = Access_count::where("post_id", $post->id)->first()->delete();
+        
+        return redirect('/');
     }
 }
