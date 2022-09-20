@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('github')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

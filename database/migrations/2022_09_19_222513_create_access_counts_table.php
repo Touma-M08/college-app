@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('access_counts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained();
+            $table->foreignId('post_id')->unique()->constrained();
             $table->integer('counts');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

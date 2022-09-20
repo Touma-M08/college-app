@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('comment_id')->constrained();
             $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

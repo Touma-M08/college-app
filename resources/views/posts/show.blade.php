@@ -2,11 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link href="{{ asset('css/show.css')}}" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
-        
         <script src="{{ asset('js/preview.js')}}" defer></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
     </head>
     <body class="antialiased">
         @extends("header")
@@ -30,7 +26,7 @@
                 <div class="post-item">
                     <div class="img">
                     @foreach ($images as $image)
-                        <div class=img-box>
+                        <div class="img-box">
                             <a href="{{ $image->image }}" data-lightbox="group{{$image->post_id}}"><img src="{{ $image->image }}"></a>
                         </div>
                     @endforeach
@@ -42,6 +38,12 @@
                         <div class="post-item">
                             <a href="/posts/{{ $post->id }}/edit">編集</a>
                         </div>
+                        
+                        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deleteData({{ $post->id }})">削除</button> 
+                        </form>
                     @endif
                 @endauth
             </div>
@@ -58,20 +60,26 @@
                             <div class="img">
                             @foreach ($com_imgs as $image)
                                 @if ($image->comment_id == $comment->id)
-                                    <div class=img-box>
+                                    <div class="img-box">
                                         <a href="{{ $image->image }}" data-lightbox="com{{$image->comment_id}}"><img src="{{ $image->image }}"></a>
                                     </div>
                                 @endif
                             @endforeach
                             </div>
                         </div>
+                        
+                        <form action="/comments/{{ $comment->id }}/{{ $post->id }}" id="form{{ $comment->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deleteComment({{ $comment->id }})">削除</button> 
+                        </form>
                     </div>
                 @endforeach
                 @endif
                 
                 <p>コメント投稿</p>
                 
-                <form method="post" action="/comment/{{ $post->id }}" enctype="multipart/form-data">
+                <form method="post" action="/comments/{{ $post->id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="comment-item">
                         <textarea class="input area" name="comment"></textarea>

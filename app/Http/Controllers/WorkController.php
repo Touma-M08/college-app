@@ -60,4 +60,11 @@ class WorkController extends Controller
         
         return redirect("/works");
     }
+    
+    public function delete(Work $work)
+    {
+        $work->delete();
+        
+        return redirect("/works");
+    }
 }
