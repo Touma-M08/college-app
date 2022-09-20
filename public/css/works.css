@@ -1,4 +1,11 @@
+.input {
+    width: 300px;
+    border: 1px solid #333;
+    padding: 3px;
+}
+
 .works {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -30,6 +37,11 @@
     object-fit: contain;
 }
 
+.app-ttl {
+    display: inline-block;
+    background:linear-gradient(transparent 70%, rgba(160, 124, 196, 0.6) 0%);
+}
+
 .modal {
     position: fixed;
     top: 0;
@@ -37,12 +49,14 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    z-index: 10;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.4s;
 }
 
 .modal.show {
-    display: block;
+    opacity: 1;
+    z-index: 10;
 }
 
 .modal-pos {
@@ -69,7 +83,7 @@
 
 .edit {
     position: absolute;
-    top: 14%;
+    bottom: 30%;
     right: 2.5%;
 }
 

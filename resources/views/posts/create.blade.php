@@ -28,10 +28,10 @@
             
             <form method="post", action="/posts" enctype="multipart/form-data">
                 @csrf
-                <input class="input" type="hidden", name="post[user_id]" value="{{ Auth::user()->id }}"/>
+                <input class="input" type="hidden", name="post[user_id]" value="{{ Auth::user()->id }}">
                 <div class="post-item">
                     <p>タイトル</p>
-                    <input class="input" type="text", name="post[title]"/>
+                    <input class="input" type="text", name="post[title]">
                 </div>
                 
                 <div class="post-item">
@@ -51,7 +51,7 @@
                 </div>
                 
                 
-                <input class="submit" type="submit" value="送信"/>
+                <input class="submit" type="submit" value="送信">
             </form>
         </div>
         @endsection

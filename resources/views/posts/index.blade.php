@@ -28,6 +28,13 @@
         <div class="content">
             <div class="page-ttl">Q&A</div>
             
+            <div>
+              <form action="{{ route('posts.index') }}" method="GET">
+                <input class="input" type="text" name="keyword" value="{{ $keyword }}" placeholder="例：リレーション">
+                <input type="submit" value="検索">
+              </form>
+            </div>
+            
             <div class="posts">
                 @foreach ($posts as $post)
                     <div class="post">
@@ -41,23 +48,18 @@
                             <pre>{{ $post->problem }}</pre>
                         </div>
                         
-                        <div class="post-item">
-                            <p>・解決方法<p>
-                            <pre>{{ $post->solution }}</pre>
-                        </div>
-                
-                        <div class="post-item">
-                            <p>・エラー画像など<p>
-                            <div class="img">
-                            @foreach ($images as $image)
-                                @if ($image->post_id == $post->id)
-                                    <div class=img-box>
-                                        <a href="{{ $image->image }}" data-lightbox="group{{$image->post_id}}"><img src="{{ $image->image }}"></a>
-                                    </div>
-                                @endif
-                            @endforeach
-                            </div>
-                        </div>
+                        @if (isset($post->access_count->counts))
+                            <form method="post" action="/posts/{{ $post->id }}/{{ $post->access_count->id }}">
+                                @csrf
+                                @method('put')
+                                <input type="submit" value="詳細追加">
+                            </form>
+                        @else
+                            <form method="post" action="/posts/{{ $post->id }}">
+                                @csrf
+                                <input type="submit" value="詳細新規">
+                            </form>
+                        @endif
                     </div>
                 @endforeach
             </div>
