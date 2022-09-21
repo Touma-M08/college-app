@@ -17,7 +17,7 @@
             </div>
             
             <div class="posts">
-                @if (count($works) == 0)
+                @if (count($posts) == 0)
                     <p>検索結果無し</p>
                 @else
                     @foreach ($posts as $post)
