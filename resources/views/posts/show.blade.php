@@ -49,7 +49,7 @@
             </div>
             
             <div class="comments">
-                @if(!(count($comments) == 0))
+                @if(count($comments) != 0)
                 <p>コメント一覧</p>
                 @foreach ($comments as $comment)
                     <div class="comment">
@@ -80,7 +80,7 @@
                 <form method="post" action="/comments/{{ $post->id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="comment-item">
-                        <textarea class="input area" name="comment"></textarea>
+                        <textarea class="input area" name="comment">value="{{ old('comment') }}"</textarea>
                         
                         @error("comment")
                             <p>{{$message}}</p>

@@ -16,7 +16,7 @@
                 <input class="input" type="hidden", name="post[user_id]" value="{{ Auth::user()->id }}">
                 <div class="post-item">
                     <p>タイトル</p>
-                    <input class="input" type="text", name="post[title]">
+                    <input class="input" type="text", name="post[title]" value="{{ old('post.title') }}">
 
                     @error("post.title")
                         <p>{{$message}}</p>
@@ -25,7 +25,7 @@
                 
                 <div class="post-item">
                     <p>発生した問題・疑問点</p>
-                    <textarea class="input area" name=post[problem]></textarea>
+                    <textarea class="input area" name=post[problem]>{{ old('post.problem') }}</textarea>
                     
                     @error("post.problem")
                         <p>{{$message}}</p>
@@ -34,7 +34,7 @@
                 
                 <div class="post-item">
                     <p>解決方法</p>
-                    <textarea class="input area" name="post[solution]"></textarea>
+                    <textarea class="input area" name="post[solution]">{{ old('post.solution') }}</textarea>
                     
                     @error("post.solution")
                         <p>{{$message}}</p>
