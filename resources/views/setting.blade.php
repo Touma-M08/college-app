@@ -26,49 +26,51 @@
         <div class="content">
             <div class="page-ttl">設定</div>
             
-            <form method="post", action="/setting">
-                @csrf
-                @method('put')
-                <div class="setting-item">
-                    <p>ユーザー名</p>
-                    <input class="input" type="text", name="users[name]" value="{{ Auth::user()->name }}"/>
+            <div class="setting-content">
+                <form method="post", action="/setting">
+                    @csrf
+                    @method('put')
+                    <div class="setting-item">
+                        <p>ユーザー名</p>
+                        <input class="input" type="text", name="users[name]" value="{{ Auth::user()->name }}"/>
+                        
+                        @error("users.name")
+                            <p>{{$message}}</p>
+                        @enderror
+                    </div>
                     
-                    @error("users.name")
+                    <div class="setting-item">
+                        <p>メールアドレス</p>
+                        <input class="input" type="text", name="users[email]" value="{{ Auth::user()->email }}"/>
+                        
+                        @error("users.email")
+                            <p>{{$message}}</p>
+                        @enderror
+                    </div>
+                    
+                    <input class="submit" type="submit" value="保存"></input>
+                </form>
+                
+                <form class="password" method="post", action="/setting/password">
+                    @csrf
+                    @method('put')
+                    <div class="setting-item">
+                        <p>パスワード</p>
+                        <input class="input" type="password", name="password"/>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <p>パスワード（再入力）</p>
+                        <input class="input" type="password", name="password_confirmation"/>
+                    </div>
+                    
+                    @error("password")
                         <p>{{$message}}</p>
                     @enderror
-                </div>
-                
-                <div class="setting-item">
-                    <p>メールアドレス</p>
-                    <input class="input" type="text", name="users[email]" value="{{ Auth::user()->email }}"/>
                     
-                    @error("users.email")
-                        <p>{{$message}}</p>
-                    @enderror
-                </div>
-                
-                <input class="submit" type="submit" value="保存"></input>
-            </form>
-            
-            <form class="password" method="post", action="/setting/password">
-                @csrf
-                @method('put')
-                <div class="setting-item">
-                    <p>パスワード</p>
-                    <input class="input" type="password", name="password"/>
-                </div>
-                
-                <div class="setting-item">
-                    <p>パスワード（再入力）</p>
-                    <input class="input" type="password", name="password_confirmation"/>
-                </div>
-                
-                @error("password")
-                    <p>{{$message}}</p>
-                @enderror
-                
-                <input class="submit" type="submit" value="保存"></input>
-            </form>
+                    <input class="submit" type="submit" value="保存"></input>
+                </form>
+            </div>
         </div>
         @endsection
     </body>

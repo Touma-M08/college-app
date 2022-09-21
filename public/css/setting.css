@@ -1,9 +1,9 @@
-.content {
-    padding-left: 18%;
-}
-
 .page-ttl {
     margin-bottom: 20px;
+}
+
+.setting-content {
+    padding: 0 30px;
 }
 
 .input {

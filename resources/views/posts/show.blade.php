@@ -8,10 +8,28 @@
         @extends("header")
         @section("content")
         <div class="content">
+            <p class="page-ttl">Q&A</p>
+            
             <div class="post">
-                <pre class="page-ttl title">{{ $post->title }}</pre>
+                <pre class="title">{{ $post->title }}</pre>
                 
-                <p class="name">{{ $post->user->name }}<p>
+                <p class="name">{{ $post->user->name }}<span>{{ $post->created_at->format("Y.m.d") }}</span><p>
+                
+                @auth
+                    @if($post->user_id == Auth::user()->id)
+                        <div class="btn-flex">
+                            <div>
+                                <a class="edit-btn post-btn" href="/posts/{{ $post->id }}/edit">編集</a>
+                            </div>
+                            
+                            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="delete-btn post-btn" type="button" onclick="deleteData({{ $post->id }})">削除</button> 
+                            </form>
+                        </div>
+                    @endif
+                @endauth
                 
                 <div class="post-item">
                     <p>・発生した問題・疑問<p>
@@ -32,28 +50,23 @@
                     @endforeach
                     </div>
                 </div>
-                
-                @auth
-                    @if($post->user_id == Auth::user()->id)
-                        <div class="post-item">
-                            <a href="/posts/{{ $post->id }}/edit">編集</a>
-                        </div>
-                        
-                        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deleteData({{ $post->id }})">削除</button> 
-                        </form>
-                    @endif
-                @endauth
             </div>
             
+            @if(count($comments) != 0)
+                <p class="content-ttl">コメント一覧</p>
+            @endif
+            
             <div class="comments">
-                @if(count($comments) != 0)
-                <p>コメント一覧</p>
                 @foreach ($comments as $comment)
                     <div class="comment">
-                        <p>{{ $comment->user->name }}</p>
+                        <p class="comment-user">{{ $comment->user->name }}</p>
+                        
+                        <form action="/comments/{{ $comment->id }}/{{ $post->id }}" id="form{{ $comment->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="comment-delete" type="button" onclick="deleteComment({{ $comment->id }})">削除</button> 
+                        </form>
+                        
                         <p>{{ $comment->comment }}</p>
                         
                         <div class="comment-item">
@@ -65,22 +78,18 @@
                             @endforeach
                             </div>
                         </div>
-                        
-                        <form action="/comments/{{ $comment->id }}/{{ $post->id }}" id="form{{ $comment->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deleteComment({{ $comment->id }})">削除</button> 
-                        </form>
                     </div>
                 @endforeach
-                @endif
-                
-                <p>コメント投稿</p>
-                
+            </div>    
+            
+               
+            <p class="content-ttl posting">コメント投稿</p>
+            
+            <div class="comments">    
                 <form method="post" action="/comments/{{ $post->id }}" enctype="multipart/form-data">
                     @csrf
                     <div class="comment-item">
-                        <textarea class="input area" name="comment">value="{{ old('comment') }}"</textarea>
+                        <textarea class="input area" name="comment">{{ old('comment') }}</textarea>
                         
                         @error("comment")
                             <p>{{$message}}</p>
@@ -98,7 +107,7 @@
                     
                     <input type="submit" class="submit" value="保存">
                 </form>
-            </div>
+            </div> 
         </div>
         @endsection
     </body>

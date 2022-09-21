@@ -18,16 +18,41 @@
 }
 
 .post .post-item {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .title {
+    font-size: 1.5rem;
+    font-weight: bold;
     display: inline-block;
     background:linear-gradient(transparent 60%, rgba(160, 124, 196, 0.6) 0%);
 }
 
 .name {
+    font-weight: bold;
+}
+
+.name span {
     font-size: 0.9rem;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.btn-flex {
+    display: flex;
+}
+
+.post-btn {
+    font-size: 0.9rem;
+}
+
+.post-btn:hover {
+    color: rgb(63,14,64);
+    text-decoration: underline;
+}
+
+.delete-btn {
+    margin-left: 10px;
 }
 
 .img {
@@ -50,6 +75,36 @@
     object-fit: cover;
 }
 
+.content-ttl {
+    margin-top: 30px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: rgb(63,14,64);
+}
+
+.content-ttl.posting {
+    margin-top: 10px;
+}
+
+.comments {
+    padding: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+}
+
+.comment-delete {
+    font-size: 0.9rem;
+}
+
+.comment-delete:hover {
+    color: rgb(63,14,64);
+    text-decoration: underline;
+}
+
 .comment-item {
     margin-top: 15px;
 }
@@ -66,6 +121,11 @@
 
 .preview + .preview {
     margin-left: 10px;
+}
+
+.input.area {
+    width: 800px;
+    height: 200px;
 }
 
 .submit {
