@@ -58,12 +58,10 @@
                         
                         <div class="comment-item">
                             <div class="img">
-                            @foreach ($com_imgs as $image)
-                                @if ($image->comment_id == $comment->id)
-                                    <div class="img-box">
-                                        <a href="{{ $image->image }}" data-lightbox="com{{$image->comment_id}}"><img src="{{ $image->image }}"></a>
-                                    </div>
-                                @endif
+                            @foreach ($comment->comment_images as $image)
+                                <div class="img-box">
+                                    <a href="{{ $image->image }}" data-lightbox="com{{$image->comment_id}}"><img src="{{ $image->image }}"></a>
+                                </div>
                             @endforeach
                             </div>
                         </div>
@@ -83,11 +81,19 @@
                     @csrf
                     <div class="comment-item">
                         <textarea class="input area" name="comment"></textarea>
+                        
+                        @error("comment")
+                            <p>{{$message}}</p>
+                        @enderror
                     </div>
                     
                     <div class="comment-item">
                         <input type="file" id="Image" name="image[]" multiple>
                         <div id="preview"></div>
+                        
+                        @error("image")
+                            <p>{{$message}}</p>
+                        @enderror
                     </div>
                     
                     <input type="submit" class="submit" value="保存">

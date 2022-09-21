@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use Storage;
 use App\Models\Post;
 use App\Models\Image;
@@ -44,7 +45,7 @@ class PostController extends Controller
         return view('posts/create');
     }
     
-    public function store(Request $request, Post $post) 
+    public function store(PostRequest $request, Post $post) 
     {
         if ($request->image == null) {
             $count = 0;
@@ -91,7 +92,7 @@ class PostController extends Controller
         ]);
     }
     
-    public function update(Request $request, Post $post) 
+    public function update(PostRequest $request, Post $post) 
     {
         if ($request->image == null) {
             $count = 0;

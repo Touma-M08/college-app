@@ -17,22 +17,38 @@
                 <div class="post-item">
                     <p>タイトル</p>
                     <input class="input" type="text", name="post[title]">
+
+                    @error("post.title")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="post-item">
                     <p>発生した問題・疑問点</p>
                     <textarea class="input area" name=post[problem]></textarea>
+                    
+                    @error("post.problem")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="post-item">
                     <p>解決方法</p>
                     <textarea class="input area" name="post[solution]"></textarea>
+                    
+                    @error("post.solution")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="post-item">
                     <p>エラー画像など</p>
                     <input type="file" id="Image" name="image[]" multiple>
                     <div id="preview"></div>
+                    
+                    @error("image")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 

@@ -13,16 +13,25 @@
             <div class="post-item">
                 <p>タイトル</p>
                 <input class="input" type="text", name="post[title]" value="{{ $post->title }}" form="main"/>
+                @error("post.title")
+                    <p>{{$message}}</p>
+                @enderror
             </div>
             
             <div class="post-item">
                 <p>発生した問題・疑問点</p>
                 <textarea class="input area" name=post[problem] form="main">{{ $post->problem }}</textarea>
+                @error("post.problem")
+                    <p>{{$message}}</p>
+                @enderror
             </div>
             
             <div class="post-item">
                 <p>解決方法</p>
                 <textarea class="input area" name="post[solution]" form="main">{{ $post->solution }}</textarea>
+                @error("post.solution")
+                    <p>{{$message}}</p>
+                @enderror
             </div>
             
             @if(count($images) != 0)
@@ -49,6 +58,9 @@
                 <p>画像追加</p>
                 <input type="file" id="Image" name="image[]" multiple form="main">
                 <div id="preview"></div>
+                @error("image")
+                    <p>{{$message}}</p>
+                @enderror
             </div>
                 
             <form method="post", action="/posts/{{ $post->id }}/update" id="main" enctype="multipart/form-data">

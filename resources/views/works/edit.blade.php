@@ -16,6 +16,9 @@
                 <div class="work-item">
                     <p>アプリ名</p>
                     <input class="input" type="text" name="work[title]" value="{{ $work->title }}"/>
+                    @error("post.title")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">

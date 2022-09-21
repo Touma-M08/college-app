@@ -17,32 +17,55 @@
                 <div class="work-item">
                     <p>アプリ名</p>
                     <input class="input" type="text", name="work[title]"/>
+                    
+                    @error("work.title")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">
                     <p>アプリ概要</p>
                     <textarea class="input area" name=work[summary]></textarea>
+                    
+                    @error("work.summary")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">
                     <p>開発言語</p>
                     <input class="input" type="text", name="work[language]"/>
+                    
+                    @error("work.language")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">
                     <p>デプロイ先リンク</p>
                     <input class="input" type="text", name="work[url]"/>
+                    
+                    @error("work.url")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">
                     <p>github</p>
                     <input class="input" type="text", name="work[github]"/>
+                    
+                    @error("work.github")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <div class="work-item">
                     <p>サムネイル・トップページの画像など</p>
                     <input type="file" id="Image" name="image">
                     <div id="preview">
+                    @error("image")
+                        <p>{{$message}}</p>
+                    @enderror
                 </div>
                 
                 <input class="submit" type="submit" value="送信"/>
