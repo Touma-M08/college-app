@@ -11,7 +11,7 @@
         <div class="content">
             <div class="page-ttl">制作物一覧</div>
             
-            <div>
+            <div class="search-box">
               <form action="{{ route('works.index') }}" method="GET">
                 <input class="input" type="text" name="keyword" value="{{ $keyword }}" placeholder="アプリ名、開発言語">
                 <input type="submit" value="検索">

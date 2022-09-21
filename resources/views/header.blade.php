@@ -34,16 +34,16 @@
             <ul>
                 @guest
                 <li>
-                    <a href="/login">ログイン</a>
+                    <a class="loginout" href="/login">ログイン</a>
                 </li>
                 <li>
-                    <a href="/register">新規登録</a>
+                    <a class="loginout" href="/register">新規登録</a>
                 </li>
                 @else
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <a class="loginout" href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                             ログアウト
                         </a>
                     </form>
