@@ -17,9 +17,10 @@
             </div>
             
             <div class="posts">
-                @foreach ($posts as $post)
-                    
-                        
+                @if (count($works) == 0)
+                    <p>検索結果無し</p>
+                @else
+                    @foreach ($posts as $post)
                         @if (isset($post->access_count->counts))
                             <form method="post" action="/posts/{{ $post->id }}/{{ $post->access_count->id }}">
                                 @csrf
@@ -50,8 +51,8 @@
                                 </button>
                             </form>
                         @endif
-                    
-                @endforeach
+                    @endforeach
+                @endif
             </div>
             
             <div class="paginate">
