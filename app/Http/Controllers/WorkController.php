@@ -35,8 +35,10 @@ class WorkController extends Controller
         $input = $request['work'];
         $work->fill($input);
         
-        $path = Storage::disk('s3')->putFile('works', $request->image, 'public');
-        $work->image = Storage::disk('s3')->url($path);
+        if (!($request->image == null)) {
+            $path = Storage::disk('s3')->putFile('works', $request->image, 'public');
+            $work->image = Storage::disk('s3')->url($path);
+        }
         
         $work->save();
         

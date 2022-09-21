@@ -16,7 +16,7 @@
                 
                 <div class="work-item">
                     <p>アプリ名</p>
-                    <input class="input" type="text", name="work[title]"/>
+                    <input class="input" type="text", name="work[title]" value="{{ old('work.title') }}"/>
                     
                     @error("work.title")
                         <p>{{$message}}</p>
@@ -25,7 +25,7 @@
                 
                 <div class="work-item">
                     <p>アプリ概要</p>
-                    <textarea class="input area" name=work[summary]></textarea>
+                    <textarea class="input area" name=work[summary]>{{ old('work.summary') }}</textarea>
                     
                     @error("work.summary")
                         <p>{{$message}}</p>
@@ -34,7 +34,7 @@
                 
                 <div class="work-item">
                     <p>開発言語</p>
-                    <input class="input" type="text", name="work[language]"/>
+                    <input class="input" type="text", name="work[language]" value="{{ old('work.language') }}"/>
                     
                     @error("work.language")
                         <p>{{$message}}</p>
@@ -43,7 +43,7 @@
                 
                 <div class="work-item">
                     <p>デプロイ先リンク</p>
-                    <input class="input" type="text", name="work[url]"/>
+                    <input class="input" type="text", name="work[url]" value="{{ old('work.url') }}"/>
                     
                     @error("work.url")
                         <p>{{$message}}</p>
@@ -52,7 +52,7 @@
                 
                 <div class="work-item">
                     <p>github</p>
-                    <input class="input" type="text", name="work[github]"/>
+                    <input class="input" type="text", name="work[github]" value="{{ old('work.github') }}"/>
                     
                     @error("work.github")
                         <p>{{$message}}</p>
