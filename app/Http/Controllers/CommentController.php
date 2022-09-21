@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use Storage;
 use App\Models\Comment;
 use App\Models\Comment_image;
@@ -11,7 +12,7 @@ use Auth;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Post $post, Comment $comment)
+    public function store(CommentRequest $request, Post $post, Comment $comment)
     {
         if ($request->image == null) {
             $count = 0;

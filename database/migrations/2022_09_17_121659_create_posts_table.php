@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('title');
-            $table->string('problem');
-            $table->string('solution');
+            $table->text('problem');
+            $table->text('solution');
             $table->timestamps();
             $table->softDeletes();
         });

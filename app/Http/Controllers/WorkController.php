@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\WorkRequest;
 use Storage;
 use App\Models\Work;
 
@@ -29,7 +30,7 @@ class WorkController extends Controller
         return view('works/create');
     }
     
-    public function store(Request $request, Work $work) 
+    public function store(WorkRequest $request, Work $work) 
     {
         $input = $request['work'];
         $work->fill($input);
@@ -47,7 +48,7 @@ class WorkController extends Controller
         return view('works/edit')->with(["work" => $work]);
     }
     
-    public function update(Request $request, Work $work) 
+    public function update(WorkRequest $request, Work $work) 
     {
         if ($request->image == null) {
             $work->fill($request['work'])->save();
