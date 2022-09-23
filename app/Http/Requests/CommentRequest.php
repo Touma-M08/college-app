@@ -20,7 +20,7 @@ class CommentRequest extends FormRequest
     {
         return [
             "comment" => 'required',
-            "image" => 'image'
+            "image.*" => 'image'
         ];
     }
 }

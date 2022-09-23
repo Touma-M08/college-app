@@ -58,7 +58,7 @@
                 <p>画像追加</p>
                 <input type="file" id="Image" name="image[]" multiple form="main">
                 <div id="preview"></div>
-                @error("image")
+                @error("image.*")
                     <p>{{$message}}</p>
                 @enderror
             </div>

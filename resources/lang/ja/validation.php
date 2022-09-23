@@ -160,6 +160,7 @@ return [
         'post.title' => 'タイトル',
         'post.problem' => '発生した問題・疑問点',
         'post.solution' => '解決方法',
+        'image.*' => '添付データ',
         'image' => '添付データ',
         'work.title' => 'アプリ名',
         'work.summary' => 'アプリ概要',

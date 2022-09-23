@@ -100,7 +100,7 @@
                         <input type="file" id="Image" name="image[]" multiple>
                         <div id="preview"></div>
                         
-                        @error("image")
+                        @error("image.*")
                             <p>{{$message}}</p>
                         @enderror
                     </div>
