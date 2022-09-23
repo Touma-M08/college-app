@@ -23,7 +23,7 @@ class PostRequest extends FormRequest
             'post.title' => 'required',
             'post.problem' => 'required',
             'post.solution' => 'required',
-            'image[]' => 'image'
+            'image.*' => 'image'
         ];
     }
 }
