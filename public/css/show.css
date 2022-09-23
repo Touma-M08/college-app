@@ -96,6 +96,12 @@
     font-weight: bold;
 }
 
+.comment-user span {
+    margin-left: 10px;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
 .comment-delete {
     font-size: 0.9rem;
 }
@@ -126,10 +132,4 @@
 .input.area {
     width: 800px;
     height: 200px;
-}
-
-.submit {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: 1px solid #333;
 }

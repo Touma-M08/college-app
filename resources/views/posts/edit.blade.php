@@ -66,7 +66,7 @@
             <form method="post", action="/posts/{{ $post->id }}/update" id="main" enctype="multipart/form-data">
                 @csrf
                 @method('put')
-                <input class="submit" type="submit" value="送信"/>
+                <input class="submit" type="submit" value="保存"/>
             </form>
             
             

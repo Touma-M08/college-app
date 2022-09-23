@@ -64,28 +64,30 @@
                                     @endif
                                 </div>
                                 
-                                <h2>{{ $work->title }}</h2>
+                                <h2 class="app-ttl">{{ $work->title }}</h2>
                                 <p>制作者:{{ $work->user->name }}<p>
                                     
                                 <div class="flex">
                                     <div class="w48">
-                                        <p>アプリ概要<p>
-                                        <pre class="text">{{ $work->summary }}<pre>
+                                        <p class="work-content-ttl">アプリ概要<p>
+                                            <div class="box">
+                                                <pre class="text work-txt">{{ $work->summary }}</pre>
+                                            </div>
                                     </div>
                                     
                                     <div class="w48">
-                                        <p>開発言語<p>
-                                        <p>{{ $work->language }}<p>
+                                        <p class="work-content-ttl">開発言語<p>
+                                        <p class="work-txt language">{{ $work->language }}<p>
                                         <div class="btn-pos">
                                             @if(isset($work->url))
                                                 <div>
-                                                    <a href="{{ $work->url }}">リンク</a>
+                                                    <a class="work-link" href="{{ $work->url }}" target="_blank" rel="noopener noreferrer">リンク</a>
                                                 </div>
                                             @endif
                                             
                                             @if(isset($work->github))
                                                 <div>
-                                                    <a href="{{ $work->github }}">github</a>
+                                                    <a class="work-link" href="{{ $work->github }}" target="_blank" rel="noopener noreferrer">github</a>
                                                 </div>
                                             @endif
                                         </div>
