@@ -4,6 +4,10 @@
     padding: 3px;
 }
 
+.no-post {
+    margin-top: 20px;
+}
+
 .post {
     border-bottom: 1px solid #333;
     width: 100%;

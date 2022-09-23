@@ -59,7 +59,7 @@
             <div class="comments">
                 @foreach ($comments as $comment)
                     <div class="comment">
-                        <p class="comment-user">{{ $comment->user->name }}</p>
+                        <p class="comment-user">{{ $comment->user->name }}<span>{{ $comment->created_at->format("Y.m.d") }}</span></p>
                         
                         <form action="/comments/{{ $comment->id }}/{{ $post->id }}" id="form{{ $comment->id }}" method="post">
                             @csrf

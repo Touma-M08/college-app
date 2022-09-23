@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class PostRequest extends FormRequest
 {
@@ -16,13 +17,13 @@ class PostRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'post.title' => 'required',
             'post.problem' => 'required',
             'post.solution' => 'required',
-            'image' => 'image'
+            'image[]' => 'image'
         ];
     }
 }

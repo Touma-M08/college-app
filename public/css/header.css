@@ -95,6 +95,13 @@ li {
     margin: 15px 0 0 10px;
 }
 
+.submit {
+    color: #fff;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: rgb(63,14,64);
+}
+
 .paginate {
     margin-top: 15px;
 }

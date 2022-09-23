@@ -18,7 +18,7 @@
             
             <div class="posts">
                 @if (count($posts) == 0)
-                    <p>検索結果無し</p>
+                    <p class="no-post">検索結果無し</p>
                 @else
                     @foreach ($posts as $post)
                         @if (isset($post->access_count->counts))

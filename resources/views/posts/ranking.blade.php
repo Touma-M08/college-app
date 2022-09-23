@@ -11,29 +11,20 @@
             
             <div class="posts">
                 @foreach ($posts as $post)
-                    <div class="post">
-                        <pre class="title">{{ $post->post->title }}</pre>
-                        
-                        <p class="name">{{ $post->post->user->name }}<p>
-                        
-                        <div class="post-item">
-                            <p>・発生した問題・疑問<p>
-                            <pre>{{ $post->post->problem }}</pre>
-                        </div>
-                        
-                        @if (isset($post->post->access_count->counts))
-                            <form method="post" action="/posts/{{ $post->post->id }}/{{ $post->post->access_count->id }}">
-                                @csrf
-                                @method('put')
-                                <input type="submit" value="詳細">
-                            </form>
-                        @else
-                            <form method="post" action="/posts/{{ $post->post->id }}">
-                                @csrf
-                                <input type="submit" value="詳細">
-                            </form>
-                        @endif
-                    </div>
+                    <form method="post" action="/posts/{{ $post->post->id }}/{{ $post->id }}">
+                        @csrf
+                        @method('put')
+                        <button class="post" type="submit">
+                            <pre class="title">{{ $post->post->title }}</pre>
+            
+                            <p class="name">{{ $post->post->user->name }}<p>
+                            
+                            <div class="post-item">
+                                <p class="problem">発生した問題・疑問<p>
+                                <pre>{{ $post->post->problem }}</pre>
+                            </div>
+                        </button>
+                    </form>
                 @endforeach
             </div>
             
